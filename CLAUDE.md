@@ -36,42 +36,34 @@ Obtain a list of available iPhone simulators using:
   xcrun simctl list devices available
 ```
 
-After that, compile the project for Beta and Release schemes and make sure the compilation succeeds:
+After that, compile the project for Debug and Release configurations and make sure the compilation succeeds:
 
-For Beta scheme (Replace iPhone 16 with the available Simulator you found in previous command. Also replace OS with the valid version):
+For Debug configuration (Replace iPhone 17 Pro with the available Simulator you found in previous command. Also replace OS with the valid version):
 ```
-  xcodebuild -workspace KataLLMiOS.xcworkspace \
-      -scheme Beta \
-      -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
+  xcodebuild -project KataLLMiOS.xcodeproj \
+      -scheme KataLLMiOS \
+      -configuration Debug \
+      -destination 'platform=iOS Simulator,name=iPhone 17 Pro,OS=26.2' \
       -destination-timeout 60 \
       build
 ```
 
-For Release scheme (apply the same transformation in the simulator name and OS):
+For Release configuration (apply the same transformation in the simulator name and OS):
 ```
-  xcodebuild -workspace KataLLMiOS.xcworkspace \
-      -scheme Release \
-      -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
+  xcodebuild -project KataLLMiOS.xcodeproj \
+      -scheme KataLLMiOS \
+      -configuration Release \
+      -destination 'platform=iOS Simulator,name=iPhone 17 Pro,OS=26.2' \
       -destination-timeout 60 \
       build
 ```
 
-After successful compilation, run the tests to ensure nothing is broken:
+After successful compilation, run the tests to ensure nothing is broken (no test target exists yet — add one before running):
 
-For Beta scheme:
 ```
-  xcodebuild -workspace KataLLMiOS.xcworkspace \
-      -scheme Beta \
-      -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
-      -destination-timeout 60 \
-      test
-```
-
-For Release scheme:
-```
-  xcodebuild -workspace KataLLMiOS.xcworkspace \
-      -scheme Release \
-      -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
+  xcodebuild -project KataLLMiOS.xcodeproj \
+      -scheme KataLLMiOS \
+      -destination 'platform=iOS Simulator,name=iPhone 17 Pro,OS=26.2' \
       -destination-timeout 60 \
       test
 ```
