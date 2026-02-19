@@ -20,7 +20,7 @@ xcodebuild -project KataLLMiOS.xcodeproj -scheme KataLLMiOS -sdk iphonesimulator
 
 - **SwiftUI app** using the `App` protocol lifecycle (`@main` in `KataLLMiOSApp.swift`)
 - Single target: `KataLLMiOS` (no test targets yet)
-- Xcode project uses **FileSystemSynchronizedRootGroup** — source files in `KataLLMiOS/` are auto-synced; no need to manually add files to the Xcode project
+- Xcode project uses **FileSystemSynchronizedRootGroup** — source files in `Sources/` are auto-synced; no need to manually add files to the Xcode project
 - Bundle ID: `es.voghdev.KataLLMiOS`
 
 ## Swift & Xcode Configuration
