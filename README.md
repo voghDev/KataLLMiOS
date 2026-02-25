@@ -4,8 +4,8 @@ iPhone app that displays a curated list of Large Language Models (LLMs) with det
 
 ## Screenshots
 
-| List | List (scrolled) |
-|------|-----------------|
+| List | Detail |
+|------|--------|
 | <img src="screenshots/screenshot1.png" width="300"> | <img src="screenshots/screenshot2.png" width="300"> |
 
 ## Architecture
