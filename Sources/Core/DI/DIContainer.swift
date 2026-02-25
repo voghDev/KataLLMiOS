@@ -10,7 +10,15 @@ struct DIContainer {
     }
 
     func makeLLMListCoordinator() -> LLMListCoordinator {
-        LLMListCoordinator(repository: makeLLMRepository(), profileDataSource: makeProfileDataSource())
+        LLMListCoordinator(
+            repository: makeLLMRepository(),
+            profileDataSource: makeProfileDataSource(),
+            subscriptionDataSource: makeSubscriptionDataSource()
+        )
+    }
+
+    func makeSubscriptionDataSource() -> SubscriptionDataSourceProtocol {
+        SubscriptionDataSource()
     }
 
     func makeProfileDataSource() -> ProfileDataSourceProtocol {

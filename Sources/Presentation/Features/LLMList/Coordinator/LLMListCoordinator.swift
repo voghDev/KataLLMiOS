@@ -8,8 +8,16 @@ final class LLMListCoordinator {
     let viewModel: LLMListViewModel
     let profileViewModel: ProfileViewModel
 
-    init(repository: LLMRepositoryProtocol, profileDataSource: ProfileDataSourceProtocol) {
-        self.viewModel = LLMListViewModel(repository: repository)
+    init(
+        repository: LLMRepositoryProtocol,
+        profileDataSource: ProfileDataSourceProtocol,
+        subscriptionDataSource: SubscriptionDataSourceProtocol
+    ) {
+        self.viewModel = LLMListViewModel(
+            repository: repository,
+            profileDataSource: profileDataSource,
+            subscriptionDataSource: subscriptionDataSource
+        )
         self.profileViewModel = ProfileViewModel(dataSource: profileDataSource)
     }
 

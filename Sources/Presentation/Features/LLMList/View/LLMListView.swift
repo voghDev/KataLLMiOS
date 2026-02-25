@@ -11,7 +11,7 @@ struct LLMListView: View {
                 Color.clear
             case .loading:
                 ProgressView("Loading LLMs...")
-            case .loaded(let llms):
+            case .loaded(let llms, _, _):
                 List(llms) { llm in
                     LLMRowView(llm: llm)
                         .contentShape(Rectangle())
@@ -27,7 +27,7 @@ struct LLMListView: View {
                     Text(message)
                 } actions: {
                     Button("Retry") {
-                        Task { await viewModel.loadLLMs() }
+                        Task { await viewModel.load() }
                     }
                 }
             }
@@ -57,7 +57,7 @@ struct LLMListView: View {
         }
         .task {
             if case .idle = viewModel.state {
-                await viewModel.loadLLMs()
+                await viewModel.load()
             }
         }
     }
