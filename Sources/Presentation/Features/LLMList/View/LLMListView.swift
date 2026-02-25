@@ -32,6 +32,27 @@ struct LLMListView: View {
             }
         }
         .navigationTitle("LLMs")
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    coordinator.openProfile()
+                } label: {
+                    Image(systemName: "person.circle")
+                }
+            }
+        }
+        .sheet(isPresented: Binding(get: { coordinator.showingProfile }, set: { coordinator.showingProfile = $0 })) {
+            NavigationStack {
+                ProfileView(viewModel: coordinator.profileViewModel)
+                    .toolbar {
+                        ToolbarItem(placement: .topBarLeading) {
+                            Button("Close") {
+                                coordinator.showingProfile = false
+                            }
+                        }
+                    }
+            }
+        }
         .task {
             if case .idle = viewModel.state {
                 await viewModel.loadLLMs()
