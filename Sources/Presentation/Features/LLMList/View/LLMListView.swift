@@ -32,6 +32,7 @@ struct LLMListView: View {
             }
         }
         .navigationTitle("LLMs")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
