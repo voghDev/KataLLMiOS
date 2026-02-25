@@ -19,6 +19,7 @@ struct LLMListView: View {
                             coordinator.showDetail(for: llm)
                         }
                 }
+                .contentMargins(.top, 0, for: .scrollContent)
             case .error(let message):
                 ContentUnavailableView {
                     Label("Error", systemImage: "exclamationmark.triangle")
